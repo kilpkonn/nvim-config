@@ -1,12 +1,11 @@
 local present1, autopairs = pcall(require, "nvim-autopairs")
-   local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.cmp")
+local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+local present3, cmp = pcall(require, 'cmp')
 
-   if not (present1 or present2) then
-      return
-   end
+if not (present1 or present2 or present3) then
+  return
+end
 
-   autopairs.setup()
-   autopairs_completion.setup {
-      map_complete = true, -- insert () func completion
-      map_cr = true,
-}
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+
+autopairs.setup()

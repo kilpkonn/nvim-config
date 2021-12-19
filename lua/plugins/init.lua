@@ -78,7 +78,7 @@ return packer.startup(
 
         use {
             "williamboman/nvim-lsp-installer",
-            event = "BufRead"
+            event = "VimEnter"
         }
 
         use {
