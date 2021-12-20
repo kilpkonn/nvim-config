@@ -230,10 +230,10 @@ return packer.startup(
         }
 
         use {
-            "terrortylor/nvim-comment",
-            cmd = "CommentToggle",
+            "numToStr/Comment.nvim",
+            event = "BufRead",
             config = function()
-                require("plugins.configs.others").comment()
+                require "plugins.configs.comment"
             end
         }
 
