@@ -96,19 +96,10 @@ fg("TelescopePreviewBorder", grey)
 
 -- LspDiagnostics ---
 
--- error / warnings
-fg("LspDiagnosticsSignError", red)
-fg("LspDiagnosticsVirtualTextError", red)
-fg("LspDiagnosticsSignWarning", yellow)
-fg("LspDiagnosticsVirtualTextWarning", yellow)
-
--- info
-fg("LspDiagnosticsSignInformation", green)
-fg("LspDiagnosticsVirtualTextInformation", green)
-
--- hint
-fg("LspDiagnosticsSignHint", purple)
-fg("LspDiagnosticsVirtualTextHint", purple)
+fg("DiagnosticWarn", "#FBBF24")
+fg("DiagnosticError", "#DC2626")
+fg("DiagnosticInfo", "#2563EB")
+fg("DiagnosticHint", "#10B981")
 
 -- dashboard
 

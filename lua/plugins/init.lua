@@ -343,7 +343,7 @@ return packer.startup(
 
         use {
           'folke/todo-comments.nvim',
-          requires = 'nvim-lua/plenary.nvim',
+          requires = { 'nvim-lua/plenary.nvim', 'nvim-base16.lua' },
           event = 'BufRead',
           config = function()
             require "plugins.configs.todo-comments"
