@@ -3,6 +3,12 @@ if not present then
     return
 end
 
+-- HACK: This is a hack as colors seem to be not loaded early enough
+local function fg_bg(group, fgcol, bgcol)
+    vim.cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
+end
+fg_bg("SignColumn", "#abb2bf", "#1e222a")
+
 todo_comments.setup {
   signs = true, -- show icons in the signs column
   sign_priority = 8, -- sign priority
@@ -35,13 +41,13 @@ todo_comments.setup {
     exclude = {}, -- list of file types to exclude highlighting
   },
   -- list of named colors where we try to extract the guifg from the
-  -- list of hilight groups or use the hex color if hl not found as a fallback TODO: 
+  -- list of hilight groups or use the hex color if hl not found as a fallback
   colors = {
-    error = { "DiagnosticError" },
-    warning = { "DiagnosticWarn" },
-    info = { "DiagnosticInfo" },
-    hint = { "DiagnosticHint" },
-    default = { "Identifier" },
+    error = { "#DC2626" },
+    warning = { "#FBBF24" },
+    info = { "#2563EB" },
+    hint = { "#10B981" },
+    default = { "#7C3AED" },
   },
   search = {
     command = "rg",

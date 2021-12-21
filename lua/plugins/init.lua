@@ -136,7 +136,7 @@ return packer.startup(
             "hrsh7th/cmp-nvim-lua",
             after = "nvim-cmp",
         }
-        
+
         use {
             "hrsh7th/cmp-nvim-lsp",
             after = "nvim-cmp",
@@ -343,8 +343,7 @@ return packer.startup(
 
         use {
           'folke/todo-comments.nvim',
-          requires = { 'nvim-lua/plenary.nvim', 'nvim-base16.lua' },
-          event = 'BufRead',
+          after = { 'nvim-lua/plenary.nvim', 'nvim-base16.lua' },
           config = function()
             require "plugins.configs.todo-comments"
           end
