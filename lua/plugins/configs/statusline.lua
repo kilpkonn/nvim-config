@@ -1,5 +1,6 @@
 local colors = require("themes.onedark")
 local lsp = require "feline.providers.lsp"
+local lsp_severity = vim.diagnostic.severity
 
 local icon_styles = {
    default = {
@@ -147,7 +148,7 @@ components.active[1][7] = {
 components.active[1][8] = {
    provider = "diagnostic_errors",
    enabled = function()
-      return lsp.diagnostics_exist "Error"
+      return lsp.diagnostics_exist(lsp_severity.ERROR)
    end,
    hl = { fg = colors.red },
    icon = "  ",
@@ -156,7 +157,7 @@ components.active[1][8] = {
 components.active[1][9] = {
    provider = "diagnostic_warnings",
    enabled = function()
-      return lsp.diagnostics_exist "Warning"
+      return lsp.diagnostics_exist(lsp_severity.WARN)
    end,
    hl = { fg = colors.yellow },
    icon = "  ",
@@ -165,7 +166,7 @@ components.active[1][9] = {
 components.active[1][10] = {
    provider = "diagnostic_hints",
    enabled = function()
-      return lsp.diagnostics_exist "Hint"
+      return lsp.diagnostics_exist(lsp_severity.HINT)
    end,
    hl = { fg = colors.grey_fg2 },
    icon = "  ",
@@ -174,7 +175,7 @@ components.active[1][10] = {
 components.active[1][11] = {
    provider = "diagnostic_info",
    enabled = function()
-      return lsp.diagnostics_exist "Information"
+      return lsp.diagnostics_exist(lsp_severity.INFO)
    end,
    hl = { fg = colors.green },
    icon = "  ",

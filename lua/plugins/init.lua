@@ -37,7 +37,7 @@ return packer.startup(
         }
 
         use {
-            "famiu/feline.nvim",
+            "feline-nvim/feline.nvim",
             after = "nvim-web-devicons",
             config = function()
                require "plugins.configs.statusline"
