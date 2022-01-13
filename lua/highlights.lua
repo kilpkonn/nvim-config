@@ -41,7 +41,6 @@ local function cl(group)
 end
 
 -- blankline
-
 fg("IndentBlanklineChar", line)
 
 -- misc --
@@ -83,7 +82,7 @@ fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
 fg("NvimTreeEndOfBuffer", darker_black)
 
-vim.cmd("hi NvimTreeRootFolder gui=underline guifg=" .. purple)
+cmd("hi NvimTreeRootFolder gui=underline guifg=" .. purple)
 bg("NvimTreeNormal", darker_black)
 fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
@@ -123,11 +122,6 @@ fg("TSRepeat", "#E06C75")
 
 fg("InlayHint", "#1070A0")
 
-fg("CmpItemAbbrMatch", "#D2E4F4")
-fg("CmpItemAbbr", "#90C0FF")
-fg("CmpItemKind", "#E89A46")
-fg("CmpItemMenu", "#107CC0")
-
 -- packer's floating window
 
 bg("NormalFloat", "NONE")
@@ -135,3 +129,24 @@ fg("FloatBorder", blue)
 
 -- set bg color for nvim
 -- bg("Normal", black)
+
+-- Nvim cmp
+fg("CmpItemMenu", "#107CC0")
+cmd [[highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080]]
+cmd [[highlight! link CmpItemAbbrMatchFuzzy TSFunction]]
+cmd [[highlight! link CmpItemAbbrMatch TSFunction]]
+cmd [[highlight! link CmpItemAbbr TSText]]
+cmd [[highlight! link CmpItemKindText TSText]]
+cmd [[highlight! link CmpItemKindMethod TSMethod]]
+cmd [[highlight! link CmpItemKindFunction TSFunction]]
+cmd [[highlight! link CmpItemKindConstructor TSConstructor]]
+cmd [[highlight! link CmpItemKindField TSField]]
+cmd [[highlight! link CmpItemKindVariable TSField]]
+cmd [[highlight! link CmpItemKindClass TSType]]
+cmd [[highlight! link CmpItemKindInterface TSTypeBuiltin]]
+cmd [[highlight! link CmpItemKindValue TSNumber]]
+cmd [[highlight! link CmpItemKindKeyword TSKeyword]]
+cmd [[highlight! link CmpItemKindSnippet TSFuncBuiltin]]
+cmd [[highlight! link CmpItemKindFile TSURI]]
+cmd [[highlight! link CmpItemKindFolder TSURI]]
+

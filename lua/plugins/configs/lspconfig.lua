@@ -76,7 +76,7 @@ end)
 
 -- replace the default lsp diagnostic symbols
 local function lspSymbol(name, icon)
-   vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "Diagnostic" .. name })
+   vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, numhl = "Diagnostic" .. name, texthl = "Diagnostic" .. name })
 end
 
 lspSymbol("Error", "")
