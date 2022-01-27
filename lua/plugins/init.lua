@@ -163,8 +163,11 @@ return packer.startup(
         }
 
         use {
-            "sbdchd/neoformat",
-            cmd = "Neoformat"
+            "jose-elias-alvarez/null-ls.nvim",
+            after = "nvim-lspconfig",
+            config = function ()
+             require "plugins.configs.null-ls"
+            end
         }
 
         -- file managing , picker etc

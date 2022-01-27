@@ -55,7 +55,7 @@ map("n", "<C-s>", ":w <CR>", opt)
 map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
 
 -- format code
-map("n", "<Leader>fm", ":Neoformat<CR>", opt)
+map("n", "<Leader>f", ":Format<CR>", opt)
 
 -- dashboard stuff
 map("n", "<Leader>db", ":Dashboard<CR>", opt)

@@ -33,7 +33,8 @@ local function on_attach(_, bufnr)
    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
    buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.setloclist()<CR>", opts)
-   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+   -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -80,8 +81,8 @@ local function lspSymbol(name, icon)
 end
 
 lspSymbol("Error", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
+lspSymbol("Information", "")
+lspSymbol("Hint", "")
 lspSymbol("Warn", "")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -112,15 +113,3 @@ vim.notify = function(msg, log_level, _opts)
    end
  end
 
- -- Custom lang servers
-local configs = require 'lspconfig/configs'
-local util = require 'lspconfig/util'
-
-lspconfig.fsautocomplete.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = {
-     debounce_text_changes = 500,
-  },
-  cmd = {'/home/tavo/.dotnet/tools/dotnet-fsautocomplete', '--background-service-enabled'}
-}

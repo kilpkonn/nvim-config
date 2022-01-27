@@ -11,6 +11,7 @@ gitsigns.setup {
         topdelete = {hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr"},
         changedelete = {hl = "DiffChange", text = "~", numhl = "GitSignsChangeNr"}
     },
+    signcolumn = true,
     numhl = false,
     keymaps = {
         -- Default keymap options
@@ -24,8 +25,9 @@ gitsigns.setup {
         ["n <leader>hp"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
         ["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line()<CR>'
     },
-    watch_index = {
-        interval = 100
+    watch_gitdir = {
+      interval = 1000,
+      follow_files = true
     },
     sign_priority = 5,
     status_formatter = nil -- Use default
