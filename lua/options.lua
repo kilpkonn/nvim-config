@@ -12,7 +12,7 @@ opt.cul = true
 opt.mouse = "a"
 opt.signcolumn = "yes"
 opt.cmdheight = 1
-opt.updatetime = 250 -- update interval for gitsigns
+opt.updatetime = 250
 opt.timeoutlen = 400
 opt.clipboard = "unnamedplus"
 
@@ -32,6 +32,12 @@ opt.numberwidth = 2
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
+
+opt.wrap = false
+opt.scrolloff = 8
+opt.sidescrolloff = 8
+
+opt.pumheight = 10
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line

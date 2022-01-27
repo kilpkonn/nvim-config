@@ -6,7 +6,24 @@ if not (present1 or present2) then
 end
 
 
-local function on_attach(_, bufnr)
+local function lsp_highlight_document(client)
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec(
+      [[
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]],
+      false
+    )
+  end
+end
+
+
+local function on_attach(client, bufnr)
    local function buf_set_keymap(...)
       vim.api.nvim_buf_set_keymap(bufnr, ...)
    end
@@ -35,6 +52,8 @@ local function on_attach(_, bufnr)
    buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.setloclist()<CR>", opts)
    -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+
+   lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -102,14 +121,14 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 })
 
 -- suppress error messages from lang servers
-vim.notify = function(msg, log_level, _opts)
-   if msg:match "exit code" then
-      return
-   end
-   if log_level == vim.log.levels.ERROR then
-      vim.api.nvim_err_writeln(msg)
-   else
-      vim.api.nvim_echo({ { msg } }, true, {})
-   end
- end
+-- vim.notify = function(msg, log_level, _opts)
+--    if msg:match "exit code" then
+--       return
+--    end
+--    if log_level == vim.log.levels.ERROR then
+--       vim.api.nvim_err_writeln(msg)
+--    else
+--       vim.api.nvim_echo({ { msg } }, true, {})
+--    end
+--  end
 
