@@ -12,6 +12,6 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.stylua,
-                null_ls.builtins.code_actions.gitsigns,
+                -- null_ls.builtins.code_actions.gitsigns,
 	},
 })
