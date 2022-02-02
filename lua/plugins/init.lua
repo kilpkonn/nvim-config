@@ -107,7 +107,7 @@ return packer.startup(
 
         use {
             "rafamadriz/friendly-snippets",
-            event = "InsertEnter",
+            event = "VimEnter",
         }
 
         use {
@@ -159,6 +159,11 @@ return packer.startup(
 
         use {
             "hrsh7th/cmp-calc",
+            after = "nvim-cmp",
+        }
+
+        use {
+            "mstanciu552/cmp-matlab",
             after = "nvim-cmp",
         }
 
@@ -366,6 +371,7 @@ return packer.startup(
 
         -- Custom language plugins
         use { "ionide/Ionide-vim", after = "nvim-lspconfig", ft = { "fs", "fsx", "fsi" } }
+        use { "andymass/vim-matlab", ft = { "matlab" } }
 
     end
 )

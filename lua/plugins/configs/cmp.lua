@@ -27,7 +27,8 @@ cmp.setup {
             buffer = "[BUF]",
             path = "[PTH]",
             luasnip = "[SNP]",
-            calc = "[CLC]"
+            calc = "[CLC]",
+            cmp_matlab = "[MAT]",
          })[entry.source.name]
 
          return vim_item
@@ -44,24 +45,24 @@ cmp.setup {
         c = cmp.mapping.close(),
       }),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      ["<Tab>"] = function(fallback)
-        if cmp.visible() then
-            cmp.select_next_item()
-        elseif require("luasnip").expand_or_jumpable() then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-        else
-            fallback()
-        end
-      end,
-      ["<S-Tab>"] = function(fallback)
+      ["<Tab>"] = cmp.mapping(function(fallback)
          if cmp.visible() then
-            cmp.select_prev_item()
-         elseif require("luasnip").jumpable(-1) then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+            cmp.select_next_item()
+         elseif require("luasnip").expand_or_jumpable() then
+            require("luasnip").expand_or_jump()
          else
             fallback()
          end
-      end, 
+      end, { "i", "s" }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+         if cmp.visible() then
+            cmp.select_prev_item()
+         elseif require("luasnip").jumpable(-1) then
+            require("luasnip").jump(-1)
+         else
+            fallback()
+         end
+      end, { "i", "s" }),
    },
    sources = cmp.config.sources({
       { name = "nvim_lsp" },
@@ -69,6 +70,7 @@ cmp.setup {
       { name = 'calc' },
       { name = "buffer" },
       { name = "path" },
+      { name = "cmp_matlab" },
    })
 }
 
