@@ -29,6 +29,6 @@ gitsigns.setup {
       interval = 1000,
       follow_files = true
     },
-    sign_priority = 5,
+    sign_priority = 6,
     status_formatter = nil -- Use default
 }

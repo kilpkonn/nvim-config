@@ -218,6 +218,9 @@ return packer.startup(
         -- git stuff
         use {
             "lewis6991/gitsigns.nvim",
+            requires = {
+                "nvim-lua/plenary.nvim"
+            },
             config = function()
                 require "plugins.configs.gitsigns"
             end
@@ -364,6 +367,7 @@ return packer.startup(
             require "plugins.configs.trouble"
           end
         }
+
         use {
           "tpope/vim-dadbod",
           cmd = { "DB" }
@@ -371,7 +375,7 @@ return packer.startup(
 
         -- Custom language plugins
         use { "ionide/Ionide-vim", after = "nvim-lspconfig", ft = { "fs", "fsx", "fsi" } }
-        use { "andymass/vim-matlab", ft = { "matlab" } }
+        use { "andymass/vim-matlab", ft = "matlab" }
 
     end
 )

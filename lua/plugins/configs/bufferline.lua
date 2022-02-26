@@ -16,7 +16,7 @@ bufferline.setup {
       modified_icon = "",
       -- close_icon = "%@NvChad_bufferline_quitvim@%X",
       close_icon = "",
-      close_command = "Bdelete! %d",
+      close_command = "bdelete! %d",
       show_close_icon = true,
       left_trunc_marker = "",
       right_trunc_marker = "",
