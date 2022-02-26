@@ -11,8 +11,8 @@ gitsigns.setup {
         topdelete = {hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr"},
         changedelete = {hl = "DiffChange", text = "~", numhl = "GitSignsChangeNr"}
     },
-    signcolumn = true,
-    numhl = false,
+    signcolumn = false,
+    numhl = true,
     keymaps = {
         -- Default keymap options
         noremap = true,
