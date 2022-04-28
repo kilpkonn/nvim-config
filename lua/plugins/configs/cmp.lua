@@ -52,22 +52,22 @@ cmp.setup {
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-            cmp.select_next_item()
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
         elseif require("luasnip").expand_or_jumpable() then
           require("luasnip").expand_or_jump()
         elseif has_words_before() then
-          cmp.complete()
+          cmp.confirm()
         else
             fallback()
         end
       end, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-            cmp.select_prev_item()
+            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
         elseif require("luasnip").jumpable(-1) then
           require("luasnip").expand_or_jump()
         elseif has_words_before() then
-          cmp.complete()
+          cmp.confirm()
         else
             fallback()
         end
