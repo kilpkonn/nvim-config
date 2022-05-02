@@ -38,6 +38,7 @@ opt.scrolloff = 8
 opt.sidescrolloff = 8
 
 opt.pumheight = 15
+opt.laststatus = 3
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
