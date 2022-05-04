@@ -191,7 +191,7 @@ return packer.startup(
 
         use {
           "nvim-telescope/telescope.nvim",
-          cmd = "Telescope",
+          after = "packer.nvim",
           -- because cheatsheet is not activated by a teleacope command
           module = "cheatsheet",
           requires = {
@@ -209,6 +209,9 @@ return packer.startup(
              {
                 "nvim-telescope/telescope-media-files.nvim",
              },
+             {
+                "nvim-telescope/telescope-ui-select.nvim",
+             }
           },
           config = function()
              require "plugins.configs.telescope"
