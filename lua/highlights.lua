@@ -44,12 +44,12 @@ end
 fg("IndentBlanklineChar", line)
 
 -- misc --
-fg("LineNr", grey)
 fg("Comment", grey_fg)
 fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
 fg_bg("SignColumn", "#abb2bf", "#1e222a")
+fg_bg("LineNr", "#abb2bf", "#1e222a")
 
 -- Pmenu
 bg("Pmenu", one_bg)

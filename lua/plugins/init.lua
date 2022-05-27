@@ -13,7 +13,6 @@ return packer.startup(
     function()
         use {
             "wbthomason/packer.nvim",
-            event = "VimEnter"
         }
 
         use {
@@ -21,8 +20,7 @@ return packer.startup(
         }
 
         use {
-            "siduck76/nvim-base16.lua",
-            after = "packer.nvim",
+            "norcalli/nvim-base16.lua",
             config = function()
                 require "theme"
             end
