@@ -20,7 +20,7 @@ return packer.startup(
         }
 
         use {
-            "norcalli/nvim-base16.lua",
+            "navarasu/onedark.nvim",
             config = function()
                 require "theme"
             end
@@ -28,7 +28,7 @@ return packer.startup(
 
         use {
             "kyazdani42/nvim-web-devicons",
-            after = "nvim-base16.lua",
+            after = "onedark.nvim",
             config = function()
                 require "plugins.configs.icons"
             end
@@ -44,7 +44,7 @@ return packer.startup(
 
         use {
             "akinsho/nvim-bufferline.lua",
-            after = "nvim-base16.lua",
+            after = "onedark.nvim",
             config = function()
                 require "plugins.configs.bufferline"
             end
@@ -355,7 +355,7 @@ return packer.startup(
 
         use {
           'folke/todo-comments.nvim',
-          after = { 'plenary.nvim', 'nvim-base16.lua' },
+          after = { 'plenary.nvim', 'onedark.nvim' },
           config = function()
             require "plugins.configs.todo-comments"
           end

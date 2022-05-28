@@ -1,6 +1,7 @@
-local colors = require("themes.onedark")
 local lsp = require "feline.providers.lsp"
 local lsp_severity = vim.diagnostic.severity
+
+local colors = require("onedark.colors")
 
 local icon_styles = {
    default = {
