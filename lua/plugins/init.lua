@@ -190,17 +190,9 @@ return packer.startup(
 
         use {
           "nvim-telescope/telescope.nvim",
-          after = "packer.nvim",
-          -- because cheatsheet is not activated by a teleacope command
-          module = "cheatsheet",
+          cmd = "Telescope",
           requires = {
-             {
-                "sudormrfbin/cheatsheet.nvim",
-                after = "telescope.nvim",
-                config = function()
-                   -- TODO: Add custom bindings
-                end,
-             },
+             {"nvim-lua/plenary.nvim"},
              {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 run = "make",
