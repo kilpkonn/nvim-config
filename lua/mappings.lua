@@ -29,14 +29,6 @@ map("", "k", 'v:count ? "k" : "gk"', {expr = true})
 map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
 map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
--- OPEN TERMINALS --
-map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
-map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
-map("n", "<C-t>t", ":terminal <CR>", opt) -- term buffer
-
--- copy whole file content
-map("n", "<C-a>", ":%y+<CR>", opt)
-
 -- toggle numbers
 map("n", "<leader>n", ":set nu!<CR>", opt)
 
