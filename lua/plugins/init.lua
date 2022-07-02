@@ -30,9 +30,6 @@ return packer.startup(
         use {
             "kyazdani42/nvim-web-devicons",
             after = "base46",
-            config = function()
-                require "plugins.configs.icons"
-            end
         }
 
         use {
