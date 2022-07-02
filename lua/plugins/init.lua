@@ -299,6 +299,11 @@ return packer.startup(
         }
 
         use {
+            "wakatime/vim-wakatime",
+            event = "BufRead"
+        }
+
+        use {
             "tpope/vim-fugitive",
             cmd = {
                 "Git"
