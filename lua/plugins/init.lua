@@ -49,14 +49,6 @@ return packer.startup(
         }
 
         use {
-            "jdhao/better-escape.vim",
-            event = "InsertEnter",
-            config = function()
-                require "plugins.configs.others".escape()
-            end
-        }
-
-        use {
             "norcalli/nvim-colorizer.lua",
             event = "BufRead",
             config = function()
@@ -83,14 +75,6 @@ return packer.startup(
             config = function()
                 require "plugins.configs.lspconfig"
             end
-        }
-
-        use {
-          "nvim-lua/lsp_extensions.nvim",
-          after = "nvim-lspconfig",
-          config = function()
-              require "plugins.configs.lsp_extensions"
-          end
         }
 
         use {
@@ -240,21 +224,6 @@ return packer.startup(
         }
 
         use {
-            "glepnir/dashboard-nvim",
-            cmd = {
-                "Dashboard",
-                "DashboardNewFile",
-                "DashboardJumpMarks",
-                "SessionLoad",
-                "SessionSave"
-            },
-            setup = function()
-                require "plugins.configs.dashboard"
-            end
-        }
-
-        -- load autosave only if its globally enabled
-        use {
             "Pocco81/AutoSave.nvim",
             config = function()
                 require "plugins.configs.autosave"
@@ -372,6 +341,14 @@ return packer.startup(
         -- Custom language plugins
         use { "ionide/Ionide-vim", after = "nvim-lspconfig", ft = { "fs", "fsx", "fsi" } }
         use { "andymass/vim-matlab", ft = "matlab" }
+        use {
+          "ShinKage/idris2-nvim",
+          requires = {'neovim/nvim-lspconfig', 'MunifTanjim/nui.nvim'},
+          after = "nvim-lspconfig",
+          config = function()
+            require('idris2').setup({})
+          end
+        }
 
     end
 )
