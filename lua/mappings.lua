@@ -39,15 +39,8 @@ map("n", "<leader>zf", ":TZFocus<CR>", opt)
 
 map("n", "<C-s>", ":w <CR>", opt)
 
--- Commenter Keybinding
--- map("n", "<leader>/", ":CommentToggle<CR>", opt)
--- map("v", "<leader>/", ":CommentToggle<CR>", opt)
-
 -- nvimtree
 map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
-
--- format code
--- map("n", "<Leader>f", ":Format<CR>", opt)
 
 -- dashboard stuff
 map("n", "<Leader>db", ":Dashboard<CR>", opt)
@@ -68,7 +61,7 @@ map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)
 map("n", "<Leader>th", ":Telescope themes<CR>", opt)
 
 map("n", "<Leader>gr", ":Telescope lsp_references<CR>", opt)
-map("n", "<Leader>ca", ":Telescope lsp_code_actions<CR>", opt)
+-- map("n", "<Leader>ca", ":Telescope lsp_code_actions<CR>", opt)
 map("n", "gi", ":Telescope lsp_implementations<CR>", opt)
 map("n", "gd", ":Telescope lsp_definitions<CR>", opt)
 map("n", "<Leader>bd", ":Telescope lsp_document_diagnostics<CR>", opt)

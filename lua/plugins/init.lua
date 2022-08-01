@@ -171,7 +171,7 @@ return packer.startup(
 
         use {
           "nvim-telescope/telescope.nvim",
-          cmd = "Telescope",
+          after = "plenary.nvim",
           requires = {
              {"nvim-lua/plenary.nvim"},
              {
@@ -224,13 +224,11 @@ return packer.startup(
         }
 
         use {
-            "Pocco81/AutoSave.nvim",
+            "Pocco81/auto-save.nvim",
+            event = "BufRead",
             config = function()
                 require "plugins.configs.autosave"
             end,
-            cond = function()
-                return vim.g.auto_save == true
-            end
         }
 
         -- smooth scroll
@@ -243,7 +241,7 @@ return packer.startup(
         }
 
         use {
-            "Pocco81/TrueZen.nvim",
+            "Pocco81/true-zen.nvim",
             cmd = {
                 "TZAtaraxis",
                 "TZMinimalist",
