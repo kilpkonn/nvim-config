@@ -224,7 +224,8 @@ return packer.startup(
         }
 
         use {
-            "Pocco81/auto-save.nvim",
+            "kilpkonn/auto-save.nvim",
+            branch = "dev",
             event = "BufRead",
             config = function()
                 require "plugins.configs.autosave"
