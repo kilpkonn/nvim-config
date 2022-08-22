@@ -65,13 +65,24 @@ return packer.startup(
         }
 
         use {
-            "williamboman/nvim-lsp-installer",
-            event = "VimEnter"
+            "williamboman/mason.nvim",
+            config = function()
+              require "plugins.configs.mason"
+            end,
+        }
+
+        use {
+            "williamboman/mason-lspconfig.nvim",
+            after = "mason.nvim",
+            config = function()
+              require("mason-lspconfig").setup()
+            end,
         }
 
         use {
             "neovim/nvim-lspconfig",
-            after = "nvim-lsp-installer",
+            after = "mason-lspconfig.nvim",
+            event = "VimEnter",
             config = function()
                 require "plugins.configs.lspconfig"
             end
@@ -300,11 +311,6 @@ return packer.startup(
         }
 
         use {
-          'Pocco81/DAPInstall.nvim',
-          event = "BufRead"
-        }
-
-        use {
           'sudormrfbin/cheatsheet.nvim',
           cmd = {
             'Cheatsheet'
@@ -340,6 +346,7 @@ return packer.startup(
         -- Custom language plugins
         use { "ionide/Ionide-vim", after = "nvim-lspconfig", ft = { "fs", "fsx", "fsi" } }
         use { "andymass/vim-matlab", ft = "matlab" }
+        use { 'michaelb/sniprun', run = 'bash ./install.sh'}
         use {
           "ShinKage/idris2-nvim",
           requires = {'neovim/nvim-lspconfig', 'MunifTanjim/nui.nvim'},

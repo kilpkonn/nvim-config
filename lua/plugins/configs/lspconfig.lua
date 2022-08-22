@@ -1,5 +1,5 @@
 local present1, lspconfig = pcall(require, "lspconfig")
-local present2, lspinstall = pcall(require, "nvim-lsp-installer")
+local present2, lspinstall = pcall(require, "mason-lspconfig")
 
 if not (present1 or present2) then
    return
@@ -73,26 +73,24 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
    },
 }
 
-lspinstall.on_server_ready(function(server)
-    local opts = {}
+require("mason-lspconfig").setup_handlers {
+        -- The first entry (without a key) will be the default handler
+        -- and will be called for each installed server that doesn't have
+        -- a dedicated handler.
+        function (server_name) -- default handler (optional)
+            require("lspconfig")[server_name].setup {
+                capabilities = capabilities,
+                on_attach = on_attach,
+            }
+        end,
+        -- Next, you can provide targeted overrides for specific servers.
+        -- For example, a handler override for the `rust_analyzer`:
+        ["rust_analyzer"] = function ()
+            require("rust-tools").setup {}
+        end
+    }
 
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
 
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-      opts.on_attach = on_attach
-      opts.capabilities = capabilities
-      opts. flags = {
-         debounce_text_changes = 500,
-      }
-      -- root_dir = vim.loop.cwd,
-
-    server:setup(opts)
-    -- vim.cmd "bufdo e"
-end)
 
 -- replace the default lsp diagnostic symbols
 local function lspSymbol(name, icon)
@@ -120,15 +118,4 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
    border = "single",
 })
 
--- suppress error messages from lang servers
--- vim.notify = function(msg, log_level, _opts)
---    if msg:match "exit code" then
---       return
---    end
---    if log_level == vim.log.levels.ERROR then
---       vim.api.nvim_err_writeln(msg)
---    else
---       vim.api.nvim_echo({ { msg } }, true, {})
---    end
---  end
 
