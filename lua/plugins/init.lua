@@ -11,13 +11,8 @@ local use = packer.use
 
 return packer.startup(
   function()
-    use {
-      "wbthomason/packer.nvim",
-    }
-
-    use {
-      "nvim-lua/plenary.nvim",
-    }
+    use { "wbthomason/packer.nvim", }
+    use { "nvim-lua/plenary.nvim", }
 
     use {
       "kilpkonn/base46",
@@ -62,6 +57,11 @@ return packer.startup(
       config = function()
         require "plugins.configs.treesitter"
       end
+    }
+
+    use {
+      "nvim-treesitter/playground",
+      cmd = { "TSPlaygroundToggle" },
     }
 
     use {
@@ -351,6 +351,7 @@ return packer.startup(
     use {
       "ShinKage/idris2-nvim",
       requires = { 'neovim/nvim-lspconfig', 'MunifTanjim/nui.nvim' },
+      ft = "idris",
       after = "nvim-lspconfig",
       config = function()
         require('idris2').setup({})

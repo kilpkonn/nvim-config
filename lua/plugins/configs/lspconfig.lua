@@ -1,7 +1,8 @@
 local present1, lspconfig = pcall(require, "lspconfig")
-local present2, lspinstall = pcall(require, "mason-lspconfig")
+local present2, mason = pcall(require, "mason-lspconfig")
 
 if not (present1 or present2) then
+  print("Lspconfig or mason-lspconfig not loaded!")
   return
 end
 
@@ -73,7 +74,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   },
 }
 
-require("mason-lspconfig").setup_handlers {
+mason.setup_handlers {
   -- The first entry (without a key) will be the default handler
   -- and will be called for each installed server that doesn't have
   -- a dedicated handler.
@@ -87,7 +88,8 @@ require("mason-lspconfig").setup_handlers {
   -- For example, a handler override for the `rust_analyzer`:
   ["rust_analyzer"] = function()
     require("rust-tools").setup {
-      tools = { inlay_hints = { highlight = "InlayHint" } }
+      tools = { inlay_hints = { highlight = "InlayHint" } },
+      server = { on_attach = on_attach },
     }
   end
 }
