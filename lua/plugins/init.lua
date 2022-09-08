@@ -222,11 +222,6 @@ return packer.startup(
     }
 
     use {
-      "andymass/vim-matchup",
-      event = "CursorMoved"
-    }
-
-    use {
       "numToStr/Comment.nvim",
       event = "BufRead",
       config = function()
@@ -235,7 +230,7 @@ return packer.startup(
     }
 
     use {
-      "kilpkonn/auto-save.nvim",
+      "Pocco81/auto-save.nvim",
       branch = "dev",
       event = "BufRead",
       config = function()
