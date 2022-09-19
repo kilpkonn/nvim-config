@@ -42,4 +42,7 @@ ts_config.setup {
             node_decremental = "grm",
         },
     },
+    matchup = {
+        enable = true,
+  },
 }

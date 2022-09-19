@@ -338,6 +338,10 @@ return packer.startup(
       cmd = { "DB" }
     }
 
+    use {
+      "andymass/vim-matchup"
+    }
+
     -- Custom language plugins
     use { "ionide/Ionide-vim", after = "nvim-lspconfig", ft = { "fs", "fsx", "fsi" } }
     use { "andymass/vim-matlab", ft = "matlab" }
@@ -352,5 +356,6 @@ return packer.startup(
         require('idris2').setup({})
       end
     }
+    use { "whonore/Coqtail", cmd = { "CoqStart" }}
   end
 )
