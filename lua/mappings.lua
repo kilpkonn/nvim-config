@@ -49,6 +49,13 @@ map("n", "<Leader>bm", ":DashboardJumpMarks<CR>", opt)
 map("n", "<C-s>l", ":SessionLoad<CR>", opt)
 map("n", "<C-s>s", ":SessionSave<CR>", opt)
 
+-- LSP
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
 -- Telescope
 map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)
 map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
