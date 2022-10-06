@@ -46,6 +46,7 @@ cmp.setup({
         luasnip = "[SNP]",
         calc = "[CLC]",
         cmp_matlab = "[MAT]",
+        rg = "[RG]",
       })[entry.source.name]
 
       return vim_item
@@ -89,6 +90,7 @@ cmp.setup({
     { name = "calc" },
     { name = "buffer" },
     { name = "path" },
+    { name = "rg" },
     { name = "cmp_matlab" },
   }),
 })
