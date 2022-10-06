@@ -13,6 +13,7 @@ return packer.startup(
   function()
     use { "wbthomason/packer.nvim", }
     use { "nvim-lua/plenary.nvim", }
+    use { "andymass/vim-matchup", }
 
     use {
       "kilpkonn/base46",
@@ -110,11 +111,6 @@ return packer.startup(
     }
 
     use {
-      "saadparwaiz1/cmp_luasnip",
-      after = "LuaSnip",
-    }
-
-    use {
       "L3MON4D3/LuaSnip",
       wants = "friendly-snippets",
       after = "nvim-cmp",
@@ -123,40 +119,15 @@ return packer.startup(
       end,
     }
 
-    use {
-      "hrsh7th/cmp-nvim-lua",
-      after = "nvim-cmp",
-    }
-
-    use {
-      "hrsh7th/cmp-nvim-lsp",
-      after = "nvim-cmp",
-    }
-
-    use {
-      "hrsh7th/cmp-buffer",
-      after = "nvim-cmp",
-    }
-
-    use {
-      "hrsh7th/cmp-path",
-      after = "nvim-cmp",
-    }
-
-    use {
-      "hrsh7th/cmp-cmdline",
-      after = "nvim-cmp",
-    }
-
-    use {
-      "hrsh7th/cmp-calc",
-      after = "nvim-cmp",
-    }
-
-    use {
-      "mstanciu552/cmp-matlab",
-      after = "nvim-cmp",
-    }
+    use { "saadparwaiz1/cmp_luasnip", after = "LuaSnip", }
+    use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp", }
+    use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp", }
+    use { "hrsh7th/cmp-buffer", after = "nvim-cmp", }
+    use { "hrsh7th/cmp-path", after = "nvim-cmp", }
+    use { "hrsh7th/cmp-cmdline", after = "nvim-cmp", }
+    use { "hrsh7th/cmp-calc", after = "nvim-cmp", }
+    use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
+    use { "mstanciu552/cmp-matlab", after = "nvim-cmp", }
 
     use {
       "jose-elias-alvarez/null-ls.nvim",
@@ -268,11 +239,6 @@ return packer.startup(
     }
 
     use {
-      "DEVELOPEST/gtm-vim",
-      event = "BufRead"
-    }
-
-    use {
       "wakatime/vim-wakatime",
       event = "BufRead"
     }
@@ -338,24 +304,11 @@ return packer.startup(
       cmd = { "DB" }
     }
 
-    use {
-      "andymass/vim-matchup"
-    }
-
     -- Custom language plugins
     use { "ionide/Ionide-vim", after = "nvim-lspconfig", ft = { "fs", "fsx", "fsi" } }
     use { "andymass/vim-matlab", ft = "matlab" }
     use { 'simrat39/rust-tools.nvim' }
     use { 'michaelb/sniprun', run = 'bash ./install.sh' }
-    use {
-      "ShinKage/idris2-nvim",
-      requires = { 'neovim/nvim-lspconfig', 'MunifTanjim/nui.nvim' },
-      ft = "idris",
-      after = "nvim-lspconfig",
-      config = function()
-        require('idris2').setup({})
-      end
-    }
-    use { "whonore/Coqtail", cmd = { "CoqStart" }}
+    use { "whonore/Coqtail", cmd = { "CoqStart" } }
   end
 )

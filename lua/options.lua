@@ -37,6 +37,8 @@ opt.wrap = false
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
+opt.spell = true
+
 opt.pumheight = 15
 opt.laststatus = 3
 
