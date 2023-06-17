@@ -68,7 +68,6 @@ map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)
 map("n", "<Leader>th", ":Telescope themes<CR>", opt)
 
 map("n", "<Leader>gr", ":Telescope lsp_references<CR>", opt)
--- map("n", "<Leader>ca", ":Telescope lsp_code_actions<CR>", opt)
 map("n", "gi", ":Telescope lsp_implementations<CR>", opt)
 map("n", "gd", ":Telescope lsp_definitions<CR>", opt)
 map("n", "<Leader>bd", ":Telescope lsp_document_diagnostics<CR>", opt)

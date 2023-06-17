@@ -64,7 +64,7 @@ telescope.setup(
                 find_cmd = "rg" -- find command (defaults to `fd`)
             },
             ui_select = {
-              require("telescope.themes").get_dropdown {
+              require("telescope.themes").get_cursor {
                 -- even more opts
               }
             }

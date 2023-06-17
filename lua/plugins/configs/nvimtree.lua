@@ -18,7 +18,6 @@ nvimtree.setup {
       },
    },
    hijack_netrw = false,
-   ignore_ft_on_setup = { "dashboard" },
    open_on_tab = false,
    hijack_cursor = true,
    update_cwd = false,
