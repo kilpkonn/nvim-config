@@ -29,14 +29,6 @@ return packer.startup(
     }
 
     use {
-      "feline-nvim/feline.nvim",
-      after = "nvim-web-devicons",
-      config = function()
-        require "plugins.configs.statusline"
-      end,
-    }
-
-    use {
       "akinsho/nvim-bufferline.lua",
       after = "base46",
       config = function()

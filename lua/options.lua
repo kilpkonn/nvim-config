@@ -1,6 +1,9 @@
 local opt = vim.opt
 local g = vim.g
 
+g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+opt.statusline = "%!v:lua.require('statusline').run()"
+
 opt.undofile = true
 opt.ruler = false
 opt.hidden = true

@@ -24,6 +24,9 @@ local function lsp_highlight_document(client)
 end
 
 local function on_attach(client, bufnr)
+  -- Disable LSP semantic highlights
+  client.server_capabilities.semanticTokensProvider = nil
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
