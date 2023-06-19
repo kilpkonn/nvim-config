@@ -121,3 +121,5 @@ map('n', '<leader>df', ':lua require"telescope".extensions.dap.frames{}<CR>')
 
 -- Cheatsheet
 map('n', '<leader>?', ':Cheatsheet<CR>', opt)
+
+map('n', '<leader>u', ':lua require("undotree").toggle()<CR>', opt)

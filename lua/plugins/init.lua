@@ -201,6 +201,16 @@ return packer.startup(
       end,
     }
 
+    use {
+      "jiaoshijie/undotree",
+      config = function()
+        require('undotree').setup()
+      end,
+      requires = {
+        "nvim-lua/plenary.nvim",
+      },
+    }
+
     -- smooth scroll
     use {
       "karb94/neoscroll.nvim",
