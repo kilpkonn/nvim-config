@@ -76,11 +76,21 @@ mason.setup_handlers {
   ["rust_analyzer"] = function()
     require("rust-tools").setup {
       tools = { inlay_hints = { highlight = "InlayHint" } },
-      server = { on_attach = on_attach },
+      server = {
+        on_attach = on_attach,
+        cmd = { '/home/tavo/git/rust-analyzer/target/debug/rust-analyzer' },
+      },
     }
   end
 }
 
+-- require'lspconfig'.rust_analyzer.setup{
+--    settings = {
+--      ['rust-analyzer'] = {
+--       cmd = { '~/git/rust-analyzer/target/debug/rust-analyzer' },
+--      }
+--    }
+--  }
 
 
 -- replace the default lsp diagnostic symbols
