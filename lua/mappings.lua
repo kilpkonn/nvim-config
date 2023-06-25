@@ -99,10 +99,6 @@ map('n', '<F6>', ':lua require"dap".step_into()<CR>')
 map('n', '<F8>', ':lua require"dap".step_out()<CR>')
 map('n', '<leader>db', ':lua require"dap".toggle_breakpoint()<CR>')
 
-map('n', '<leader>dsc', ':lua require"dap.ui.variables".scopes()<CR>')
-map('n', '<leader>dhh', ':lua require"dap.ui.variables".hover()<CR>')
-map('v', '<leader>dhv', ':lua require"dap.ui.variables".visual_hover()<CR>')
-
 map('n', '<leader>duh', ':lua require"dap.ui.widgets".hover()<CR>')
 map('n', '<leader>duf', ":lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>")
 

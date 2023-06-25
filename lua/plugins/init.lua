@@ -269,6 +269,15 @@ return packer.startup(
     }
 
     use {
+      "rcarriga/nvim-dap-ui",
+      after = "dap",
+      requires = {"mfussenegger/nvim-dap"},
+      config = function ()
+        require "plugins.configs.dap-ui"
+      end
+    }
+
+    use {
       'nvim-telescope/telescope-dap.nvim',
       event = "VimEnter"
     }
