@@ -28,7 +28,9 @@ local function on_attach(client, bufnr)
   client.server_capabilities.semanticTokensProvider = nil
 
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(buf, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  vim.api.nvim_buf_set_option(buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.api.nvim_buf_set_option(buf, "tagfunc", "v:lua.vim.lsp.tagfunc")
 
   -- Mappings.
   local opts = { noremap = true, silent = true, buffer=bufnr }
@@ -38,7 +40,7 @@ local function on_attach(client, bufnr)
   vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
   vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
   vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+  vim.keymap.set({ 'n', 'v' }, "<space>ca", vim.lsp.buf.code_action, opts)
   vim.keymap.set("n", "<space>f", function() vim.lsp.buf.format { async = true } end, opts)
 
   -- lsp_highlight_document(client)
@@ -74,6 +76,7 @@ mason.setup_handlers {
   -- Next, you can provide targeted overrides for specific servers.
   -- For example, a handler override for the `rust_analyzer`:
   ["rust_analyzer"] = function()
+    vim.lsp.set_log_level("debug")
     require("rust-tools").setup {
       tools = { inlay_hints = { highlight = "InlayHint" } },
       server = {
@@ -119,3 +122,4 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
   border = "single",
 })
+

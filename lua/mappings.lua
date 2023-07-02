@@ -1,9 +1,9 @@
 local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true, silent = true}
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 local opt = {}
@@ -24,10 +24,10 @@ map("v", "p", '"_dP', opt)
 -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
 -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 -- empty mode is same as using :map
-map("", "j", 'v:count ? "j" : "gj"', {expr = true})
-map("", "k", 'v:count ? "k" : "gk"', {expr = true})
-map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
-map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
+map("", "j", 'v:count ? "j" : "gj"', { expr = true })
+map("", "k", 'v:count ? "k" : "gk"', { expr = true })
+map("", "<Down>", 'v:count ? "j" : "gj"', { expr = true })
+map("", "<Up>", 'v:count ? "k" : "gk"', { expr = true })
 
 -- toggle numbers
 map("n", "<leader>n", ":set nu!<CR>", opt)
@@ -93,19 +93,28 @@ map("n", "<Leader>gl", ":diffget //3<CR>", opt)
 map("n", "<Leader>gb", ":Git blame<CR>", opt)
 
 -- DAP
-map('n', '<F10>', ':lua require"dap".continue()<CR>')
-map('n', '<F7>', ':lua require"dap".step_over()<CR>')
-map('n', '<F6>', ':lua require"dap".step_into()<CR>')
-map('n', '<F8>', ':lua require"dap".step_out()<CR>')
-map('n', '<leader>db', ':lua require"dap".toggle_breakpoint()<CR>')
+vim.keymap.set('n', '<F10>', function() require('dap').continue() end)
+vim.keymap.set('n', '<F7>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<F6>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F8>', function() require('dap').step_out() end)
 
-map('n', '<leader>duh', ':lua require"dap.ui.widgets".hover()<CR>')
-map('n', '<leader>duf', ":lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>")
+vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
 
-map('n', '<leader>dsbr', ':lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>')
-map('n', '<leader>dsbm', ':lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>')
-map('n', '<leader>dro', ':lua require"dap".repl.open()<CR>')
-map('n', '<leader>drl', ':lua require"dap".repl.run_last()<CR>')
+vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
+  require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<Leader>df', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.scopes)
+end)
 
 
 -- telescope-dap

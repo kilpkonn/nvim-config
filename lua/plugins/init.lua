@@ -269,15 +269,6 @@ return packer.startup(
     }
 
     use {
-      "rcarriga/nvim-dap-ui",
-      after = "dap",
-      requires = {"mfussenegger/nvim-dap"},
-      config = function ()
-        require "plugins.configs.dap-ui"
-      end
-    }
-
-    use {
       'nvim-telescope/telescope-dap.nvim',
       event = "VimEnter"
     }
@@ -318,8 +309,7 @@ return packer.startup(
     -- Custom language plugins
     use { "ionide/Ionide-vim", after = "nvim-lspconfig", ft = { "fs", "fsx", "fsi" } }
     use { "andymass/vim-matlab", ft = "matlab" }
-    use { 'simrat39/rust-tools.nvim' }
+    use { 'kilpkonn/rust-tools.nvim', branch = "item_tree" }
     use { 'michaelb/sniprun', run = 'bash ./install.sh' }
-    use { "whonore/Coqtail", cmd = { "CoqStart" } }
-  end
+    end
 )

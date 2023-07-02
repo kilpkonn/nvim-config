@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-vim.o.completeopt = "menu,menuone,noselect"
+vim.o.completeopt = "menu,menuone"
 
 local function border(hl_name)
   return {
@@ -69,7 +69,7 @@ cmp.setup({
       if cmp.visible() then
         cmp.select_next_item()
       elseif require("luasnip").expand_or_jumpable() then
-        require("luasnip").expand_or_jump()
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
       else
         fallback()
       end
@@ -78,7 +78,7 @@ cmp.setup({
       if cmp.visible() then
         cmp.select_prev_item()
       elseif require("luasnip").jumpable(-1) then
-        require("luasnip").expand_or_jump()
+       vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
       else
         fallback()
       end
