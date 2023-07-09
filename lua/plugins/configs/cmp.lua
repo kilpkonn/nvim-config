@@ -45,7 +45,6 @@ cmp.setup({
         path = "[PTH]",
         luasnip = "[SNP]",
         calc = "[CLC]",
-        cmp_matlab = "[MAT]",
         rg = "[RG]",
       })[entry.source.name]
 
@@ -91,7 +90,6 @@ cmp.setup({
     { name = "buffer" },
     { name = "path" },
     { name = "rg" },
-    { name = "cmp_matlab" },
   }),
 })
 

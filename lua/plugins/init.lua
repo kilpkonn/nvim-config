@@ -53,11 +53,6 @@ return packer.startup(
     }
 
     use {
-      "nvim-treesitter/playground",
-      cmd = { "TSPlaygroundToggle" },
-    }
-
-    use {
       "williamboman/mason.nvim",
       config = function()
         require "plugins.configs.mason"
@@ -119,7 +114,6 @@ return packer.startup(
     use { "hrsh7th/cmp-cmdline", after = "nvim-cmp", }
     use { "hrsh7th/cmp-calc", after = "nvim-cmp", }
     use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
-    use { "mstanciu552/cmp-matlab", after = "nvim-cmp", }
 
     use {
       "jose-elias-alvarez/null-ls.nvim",
@@ -176,14 +170,15 @@ return packer.startup(
     }
 
     -- misc plugins
-    use {
-      "windwp/nvim-autopairs",
-      after = "nvim-cmp",
-      config = function()
-        require "plugins.configs.autopairs"
-      end
+    use{
+      'altermo/ultimate-autopair.nvim',
+      event={'InsertEnter','CmdlineEnter'},
+      config=function ()
+          require('ultimate-autopair').setup({
+                  --Config goes here
+                  })
+      end,
     }
-
     use {
       "numToStr/Comment.nvim",
       event = "BufRead",
@@ -308,7 +303,6 @@ return packer.startup(
 
     -- Custom language plugins
     use { "ionide/Ionide-vim", after = "nvim-lspconfig", ft = { "fs", "fsx", "fsi" } }
-    use { "andymass/vim-matlab", ft = "matlab" }
     use { 'kilpkonn/rust-tools.nvim', branch = "item_tree" }
     use { 'michaelb/sniprun', run = 'bash ./install.sh' }
     end
