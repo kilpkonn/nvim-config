@@ -9,7 +9,7 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -87,7 +87,7 @@ mason.setup_handlers {
     require("rust-tools").setup {
       tools = { inlay_hints = { highlight = "InlayHint" } },
       server = {
-        cmd = { '/home/tavo/git/rust-analyzer/target/debug/rust-analyzer' },
+        cmd = { '/home/tavo/git/rust-analyzer/target/release/rust-analyzer' },
       },
     }
   end

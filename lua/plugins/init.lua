@@ -305,5 +305,6 @@ return packer.startup(
     use { "ionide/Ionide-vim", after = "nvim-lspconfig", ft = { "fs", "fsx", "fsi" } }
     use { 'kilpkonn/rust-tools.nvim', branch = "item_tree" }
     use { 'michaelb/sniprun', run = 'bash ./install.sh' }
+    use {'kaarmu/typst.vim', ft = {'typst'}}
     end
 )
