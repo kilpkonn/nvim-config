@@ -115,14 +115,6 @@ return packer.startup(
     use { "hrsh7th/cmp-calc", after = "nvim-cmp", }
     use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 
-    use {
-      "jose-elias-alvarez/null-ls.nvim",
-      after = "nvim-lspconfig",
-      config = function()
-        require "plugins.configs.null-ls"
-      end
-    }
-
     -- file managing , picker etc
     use {
       "kyazdani42/nvim-tree.lua",
@@ -299,6 +291,13 @@ return packer.startup(
     use {
       "tpope/vim-dadbod",
       cmd = { "DB" }
+    }
+
+    use {
+      "m4xshen/hardtime.nvim",
+      config = function()
+        require("hardtime").setup()
+      end
     }
 
     -- Custom language plugins
