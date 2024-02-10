@@ -6,23 +6,6 @@ if not (present1 or present2) then
   return
 end
 
-
-local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_exec(
-      [[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]] ,
-      false
-    )
-  end
-end
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -88,9 +71,28 @@ mason.setup_handlers {
       tools = { inlay_hints = { highlight = "InlayHint" } },
       server = {
         cmd = { '/home/tavo/git/rust-analyzer/target/release/rust-analyzer' },
+        settings = {
+          ['rust-analyzer'] = {
+            completion = {
+              termSearch = {
+                enable = true;
+              }
+            }
+          }
+        }
       },
     }
-  end
+  end,
+  ["ltex"] = function ()
+    lspconfig.ltex.setup {
+      filetypes = { "typst", "tex" },
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+          -- rest of your on_attach process.
+          require("ltex_extra").setup {  }
+      end,
+    }
+   end
 }
 
 -- replace the default lsp diagnostic symbols
