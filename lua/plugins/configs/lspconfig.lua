@@ -9,6 +9,7 @@ end
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
+    vim.lsp.inlay_hint.enable(true)
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
@@ -67,9 +68,8 @@ mason.setup_handlers {
   -- Next, you can provide targeted overrides for specific servers.
   -- For example, a handler override for the `rust_analyzer`:
   ["rust_analyzer"] = function()
-    require("rust-tools").setup {
-      tools = { inlay_hints = { highlight = "InlayHint" } },
-      server = {
+    lspconfig.rust_analyzer.setup {
+        capabilities = capabilities,
         cmd = { '/home/tavo/git/rust-analyzer/target/release/rust-analyzer' },
         settings = {
           ['rust-analyzer'] = {
@@ -79,18 +79,26 @@ mason.setup_handlers {
               }
             }
           }
-        }
-      },
-    }
+        },
+        on_attach = function(client, bufnr)
+            vim.lsp.inlay_hint.enable(bufnr)
+        end
+      }
   end,
   ["ltex"] = function ()
     lspconfig.ltex.setup {
-      filetypes = { "typst", "tex" },
+      filetypes = { "tex" },
       capabilities = capabilities,
       on_attach = function(client, bufnr)
           -- rest of your on_attach process.
           require("ltex_extra").setup {  }
       end,
+    }
+  end,
+    ["grammarly"] = function ()
+    lspconfig.grammarly.setup {
+      filetypes = { "typst", "tex" },
+      capabilities = capabilities,
     }
    end
 }
