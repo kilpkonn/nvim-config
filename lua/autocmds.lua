@@ -18,3 +18,12 @@ vim.cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter,TermEnter * lua req
 
 --auto close file exploer when quiting incase a single buffer is left
 vim.cmd([[ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'nvimtree') | q | endif ]])
+
+vim.api.nvim_create_autocmd("LspProgress", {
+  callback = function(args)
+    if string.find(args.match, "end") then
+      vim.cmd "redrawstatus"
+    end
+    vim.cmd "redrawstatus"
+  end,
+})

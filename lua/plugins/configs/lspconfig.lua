@@ -81,7 +81,7 @@ mason.setup_handlers {
           }
         },
         on_attach = function(client, bufnr)
-            vim.lsp.inlay_hint.enable(bufnr)
+            vim.lsp.inlay_hint.enable(true)
         end
       }
   end,

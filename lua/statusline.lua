@@ -99,24 +99,17 @@ end
 
 -- LSP STUFF
 M.LSP_progress = function()
-  if not rawget(vim, "lsp") or vim.lsp.status then
+  local msg = vim.lsp.status() 
+
+  if #msg == 0 or vim.o.columns < 120 then
     return ""
   end
 
-  local Lsp = vim.lsp.util.get_progress_messages()[1]
-
-  if vim.o.columns < 120 or not Lsp then
-    return ""
-  end
-
-  local msg = Lsp.message or ""
-  local percentage = Lsp.percentage or 0
-  local title = Lsp.title or ""
   local spinners = { "", "󰪞", "󰪟", "󰪠", "󰪢", "󰪣", "󰪤", "󰪥" }
-  local ms = vim.loop.hrtime() / 1000000
-  local frame = math.floor(ms / 120) % #spinners
-  local content = string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
-  -- content = string.sub(content, 1, config.lsprogress_len)
+  local ms = vim.loop.hrtime() / 1e6
+  local frame = math.floor(ms / 100) % #spinners
+
+  local content = spinners[frame + 1] .. " " .. msg
 
   return ("%#St_LspProgress#" .. content) or ""
 end
