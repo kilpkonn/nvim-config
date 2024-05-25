@@ -76,7 +76,11 @@ mason.setup_handlers {
             completion = {
               termSearch = {
                 enable = true;
+                fuel = 600;
               }
+            },
+            assist = {
+              termSearch = { fuel = 1000; }
             }
           }
         },
