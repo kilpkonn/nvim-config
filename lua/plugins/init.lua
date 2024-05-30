@@ -293,6 +293,16 @@ return packer.startup(
       cmd = { "DB" }
     }
 
+    use {
+      'MeanderingProgrammer/markdown.nvim',
+      as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+      after = { 'nvim-treesitter' },
+      ft = { "md" },
+      config = function()
+          require('render-markdown').setup({})
+      end,
+    }
+
     -- use {
     --   "m4xshen/hardtime.nvim",
     --   config = function()
