@@ -40,19 +40,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
+capabilities.textDocument.completion.completionItem = {
+  documentationFormat = { "markdown", "plaintext" },
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = { valueSet = { 1 } },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
   },
 }
 
@@ -99,12 +101,29 @@ mason.setup_handlers {
       end,
     }
   end,
-    ["grammarly"] = function ()
-    lspconfig.grammarly.setup {
-      filetypes = { "typst", "tex" },
-      capabilities = capabilities,
+}
+
+lspconfig.textlsp.setup {
+  filetypes = { "tex", "text", "markdown", "typst" },
+  capabilities = capabilities,
+  settings = {
+    textLSP = {
+      analysers = {
+          languagetool = {
+              enabled = false,
+              check_text = { on_open = true, on_save = true, on_change = false, }
+          },
+          hf_checker = {
+              enabled = true,
+              gpu = true,
+              quantize=32,
+              model='pszemraj/flan-t5-large-grammar-synthesis',
+              min_length=40,
+              check_text = { on_open = true, on_save = true, on_change = true, }
+          },
+      },
     }
-   end
+  }
 }
 
 -- replace the default lsp diagnostic symbols
