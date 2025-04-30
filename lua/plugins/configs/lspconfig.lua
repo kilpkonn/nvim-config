@@ -101,29 +101,17 @@ mason.setup_handlers {
       end,
     }
   end,
-}
-
-lspconfig.textlsp.setup {
-  filetypes = { "tex", "text", "markdown", "typst" },
-  capabilities = capabilities,
-  settings = {
-    textLSP = {
-      analysers = {
-          languagetool = {
-              enabled = false,
-              check_text = { on_open = true, on_save = true, on_change = false, }
-          },
-          hf_checker = {
-              enabled = true,
-              gpu = true,
-              quantize=32,
-              model='pszemraj/flan-t5-large-grammar-synthesis',
-              min_length=40,
-              check_text = { on_open = true, on_save = true, on_change = true, }
-          },
-      },
+  ["kotlin_language_server"] = function ()
+    lspconfig.kotlin_language_server.setup {
+      settings = {
+        formatting = {
+          ktfmt = {
+            maxWidth = 140,
+          }
+        }
+      }
     }
-  }
+  end
 }
 
 -- replace the default lsp diagnostic symbols
