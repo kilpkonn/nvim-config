@@ -65,20 +65,32 @@ vim.lsp.config('kotlin_language_server', {
   },
 })
 
--- replace the default lsp diagnostic symbols
-local function lspSymbol(name, icon)
-  vim.fn.sign_define("DiagnosticSign" .. name,
-    { text = icon, numhl = "Diagnostic" .. name, texthl = "Diagnostic" .. name })
-end
-
-lspSymbol("Error", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
-lspSymbol("Warn", "")
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO] = '',
+            [vim.diagnostic.severity.HINT] = '',
+        },
+        -- linehl = {
+        --     [vim.diagnostic.severity.ERROR] = 'DiagnosticError',
+        --     [vim.diagnostic.severity.WARN] = 'DiagnosticWarn',
+        --     [vim.diagnostic.severity.INFO] = 'DiagnosticInfo',
+        --     [vim.diagnostic.severity.HINT] = 'DiagnosticHint',
+        -- },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = 'DiagnosticError',
+            [vim.diagnostic.severity.WARN] = 'DiagnosticWarn',
+            [vim.diagnostic.severity.INFO] = 'DiagnosticInfo',
+            [vim.diagnostic.severity.HINT] = 'DiagnosticHint',
+        },
+    },
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = {
-    prefix = "",
+    -- prefix = "",
     spacing = 0,
   },
   signs = true,
