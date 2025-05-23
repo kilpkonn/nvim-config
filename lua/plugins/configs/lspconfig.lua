@@ -33,86 +33,37 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
-    vim.keymap.set('v', '<space>f', function() 
+    vim.keymap.set('v', '<space>f', function()
       vim.lsp.buf.range_formatting { async = true }
     end, opts)
   end,
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { "markdown", "plaintext" },
-  snippetSupport = true,
-  preselectSupport = true,
-  insertReplaceSupport = true,
-  labelDetailsSupport = true,
-  deprecatedSupport = true,
-  commitCharactersSupport = true,
-  tagSupport = { valueSet = { 1 } },
-  resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  },
-}
-
-mason.setup_handlers {
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function(server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {
-      capabilities = capabilities,
-    }
-  end,
-  -- Next, you can provide targeted overrides for specific servers.
-  -- For example, a handler override for the `rust_analyzer`:
-  ["rust_analyzer"] = function()
-    lspconfig.rust_analyzer.setup {
-        capabilities = capabilities,
-        cmd = { '/home/tavo/git/rust-analyzer/target/release/rust-analyzer' },
-        settings = {
-          ['rust-analyzer'] = {
-            completion = {
-              termSearch = {
-                enable = true;
-                fuel = 3000;
-              }
-            },
-            assist = {
-              termSearch = { fuel = 3000, borrowcheck = false, }
-            }
-          }
-        },
-        on_attach = function(client, bufnr)
-            vim.lsp.inlay_hint.enable(true)
-        end
-      }
-  end,
-  ["ltex"] = function ()
-    lspconfig.ltex.setup {
-      filetypes = { "tex" },
-      capabilities = capabilities,
-      on_attach = function(client, bufnr)
-          -- rest of your on_attach process.
-          require("ltex_extra").setup {  }
-      end,
-    }
-  end,
-  ["kotlin_language_server"] = function ()
-    lspconfig.kotlin_language_server.setup {
-      settings = {
-        formatting = {
-          ktfmt = {
-            maxWidth = 140,
-          }
+vim.lsp.config('rust_analyzer', {
+  -- Server-specific settings. See `:help lsp-quickstart`
+  settings = {
+      completion = {
+        termSearch = {
+          enable = true,
+          fuel = 3000,
         }
+      },
+      assist = {
+        termSearch = { fuel = 3000, borrowcheck = false, }
+      }
+  },
+})
+
+vim.lsp.config('kotlin_language_server', {
+  -- Server-specific settings. See `:help lsp-quickstart`
+  settings = {
+    formatting = {
+      ktfmt = {
+        maxWidth = 140,
       }
     }
-  end
-}
+  },
+})
 
 -- replace the default lsp diagnostic symbols
 local function lspSymbol(name, icon)
@@ -140,4 +91,3 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
   border = "single",
 })
-
