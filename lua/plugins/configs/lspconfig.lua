@@ -49,6 +49,11 @@ vim.lsp.config('kotlin_language_server', {
   -- Server-specific settings. See `:help lsp-quickstart`
   settings = {
     kotlin = {
+      inlayHints = {
+        typeHints = true,
+        parameterHints = true,
+        chainedHints = true,
+      },
       formatting = {
         ktfmt = {
           ident = 2,
