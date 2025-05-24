@@ -1,17 +1,8 @@
-local present1, lspconfig = pcall(require, "lspconfig")
-local present2, mason = pcall(require, "mason-lspconfig")
-
-if not (present1 or present2) then
-  print("Lspconfig or mason-lspconfig not loaded!")
-  return
-end
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
     vim.lsp.inlay_hint.enable(true)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -57,9 +48,13 @@ vim.lsp.config('rust_analyzer', {
 vim.lsp.config('kotlin_language_server', {
   -- Server-specific settings. See `:help lsp-quickstart`
   settings = {
-    formatting = {
-      ktfmt = {
-        maxWidth = 140,
+    kotlin = {
+      formatting = {
+        ktfmt = {
+          ident = 2,
+          maxWidth = 140,
+          continuationIndent = 4,
+        }
       }
     }
   },

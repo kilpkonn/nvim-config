@@ -69,7 +69,6 @@ return packer.startup(
 
     use {
       "neovim/nvim-lspconfig",
-      after = "mason-lspconfig.nvim",
       event = "VimEnter",
       config = function()
         require "plugins.configs.lspconfig"

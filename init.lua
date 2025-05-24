@@ -2,6 +2,7 @@ require "options"
 require "mappings"
 require "autocmds"
 
+require "plugins.configs.lspconfig"
 
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'plugins' require('packer').compile()")
