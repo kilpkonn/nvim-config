@@ -16,39 +16,10 @@ return packer.startup(
     use { "andymass/vim-matchup", }
 
     use {
-      "kilpkonn/base46",
-      after = "plenary.nvim",
-      config = function()
-        require "theme"
-      end
-    }
-
-    use {
-      "kyazdani42/nvim-web-devicons",
-      after = "base46",
-    }
-
-    use {
-      "akinsho/nvim-bufferline.lua",
-      after = "base46",
-      config = function()
-        require "plugins.configs.bufferline"
-      end
-    }
-
-    use {
       "norcalli/nvim-colorizer.lua",
       event = "BufRead",
       config = function()
         require("plugins.configs.others").colorizer()
-      end
-    }
-
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      event = "VimEnter",
-      config = function()
-        require "plugins.configs.treesitter"
       end
     }
 
@@ -68,29 +39,13 @@ return packer.startup(
     }
 
     use {
-      "neovim/nvim-lspconfig",
-      event = "VimEnter",
-      config = function()
-        require "plugins.configs.lspconfig"
-      end
-    }
-
-    use {
-      "ray-x/lsp_signature.nvim",
-      after = "nvim-lspconfig",
-      config = function()
-        require("plugins.configs.others").signature()
-      end
-    }
-
-    use {
       "rafamadriz/friendly-snippets",
       event = "VimEnter",
     }
 
     use {
       "hrsh7th/nvim-cmp",
-      after = { "friendly-snippets", "nvim-lspconfig" },
+      after = { "friendly-snippets" },
       config = function()
         require "plugins.configs.cmp"
       end,
@@ -273,7 +228,7 @@ return packer.startup(
 
     use {
       'folke/todo-comments.nvim',
-      after = { 'plenary.nvim', 'base46' },
+      after = { 'plenary.nvim' },
       config = function()
         require "plugins.configs.todo-comments"
       end
@@ -281,7 +236,6 @@ return packer.startup(
 
     use {
       "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require "plugins.configs.trouble"
       end
@@ -295,7 +249,6 @@ return packer.startup(
     use {
       'MeanderingProgrammer/markdown.nvim',
       as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
-      after = { 'nvim-treesitter' },
       ft = { "md" },
       config = function()
           require('render-markdown').setup({})
@@ -310,7 +263,7 @@ return packer.startup(
     -- }
 
     -- Custom language plugins
-    use { 'michaelb/sniprun', run = 'bash ./install.sh' }
+    -- use { 'michaelb/sniprun', run = 'bash ./install.sh' }
     use { 'kaarmu/typst.vim', ft = {'typst'} }
     use { "nushell/tree-sitter-nu" }
     end

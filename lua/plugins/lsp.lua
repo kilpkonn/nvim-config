@@ -1,3 +1,8 @@
+vim.pack.add{
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+  -- { src = 'https://github.com/ray-x/lsp_signature.nvim' },
+}
+
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -45,10 +50,11 @@ vim.lsp.config('rust_analyzer', {
   },
 })
 
-vim.lsp.config('kotlin_language_server', {
+vim.lsp.config('kotlin-lsp', {
   -- Server-specific settings. See `:help lsp-quickstart`
   settings = {
     kotlin = {
+      compiler = { jvm = { target = "21" } },
       inlayHints = {
         typeHints = true,
         parameterHints = true,
@@ -88,18 +94,18 @@ vim.diagnostic.config({
     },
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = {
-    -- prefix = "",
-    spacing = 0,
-  },
-  signs = true,
-  underline = true,
-  update_in_insert = false, -- update diagnostics insert mode
-})
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "single",
-})
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "single",
-})
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+--   virtual_text = {
+--     -- prefix = "",
+--     spacing = 0,
+--   },
+--   signs = true,
+--   underline = true,
+--   update_in_insert = false, -- update diagnostics insert mode
+-- })
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+--   border = "single",
+-- })
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+--   border = "single",
+-- })
