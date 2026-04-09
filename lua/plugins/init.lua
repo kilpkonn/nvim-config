@@ -12,16 +12,7 @@ local use = packer.use
 return packer.startup(
   function()
     use { "wbthomason/packer.nvim", }
-    use { "nvim-lua/plenary.nvim", }
     use { "andymass/vim-matchup", }
-
-    use {
-      "norcalli/nvim-colorizer.lua",
-      event = "BufRead",
-      config = function()
-        require("plugins.configs.others").colorizer()
-      end
-    }
 
     use {
       "williamboman/mason.nvim",

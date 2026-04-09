@@ -3,6 +3,7 @@ vim.pack.add({
   { src = 'https://github.com/kilpkonn/base46' },
   { src = 'https://github.com/kyazdani42/nvim-web-devicons' },
   { src = 'https://github.com/akinsho/nvim-bufferline.lua' },
+  { src = 'https://github.com/catgoose/nvim-colorizer.lua' },
 })
 
 vim.g.nvchad_theme = "onedark"
@@ -36,5 +37,7 @@ require("bufferline").setup({
       },
    },
 })
+
+require("colorizer").setup()
 
 -- require('vim._core.ui2').enable({})
