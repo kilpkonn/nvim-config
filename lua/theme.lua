@@ -1,4 +1,5 @@
 vim.pack.add({
+  { src = 'https://github.com/nvim-lua/plenary.nvim' },
   { src = 'https://github.com/kilpkonn/base46' },
   { src = 'https://github.com/kyazdani42/nvim-web-devicons' },
   { src = 'https://github.com/akinsho/nvim-bufferline.lua' },
@@ -35,3 +36,5 @@ require("bufferline").setup({
       },
    },
 })
+
+-- require('vim._core.ui2').enable({})
