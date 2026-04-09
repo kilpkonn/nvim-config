@@ -4,6 +4,7 @@ vim.pack.add({
   { src = 'https://github.com/kyazdani42/nvim-web-devicons' },
   { src = 'https://github.com/akinsho/nvim-bufferline.lua' },
   { src = 'https://github.com/catgoose/nvim-colorizer.lua' },
+  { src = 'https://github.com/kyazdani42/nvim-tree.lua' },
 })
 
 vim.g.nvchad_theme = "onedark"
@@ -39,5 +40,52 @@ require("bufferline").setup({
 })
 
 require("colorizer").setup()
+
+require("nvim-tree").setup({
+   filters = {
+      dotfiles = false,
+      custom = { ".git", "node_modules", ".cache" },
+   },
+   renderer = {
+    highlight_git = false,
+    highlight_opened_files = "none",
+    indent_markers = {
+      enable = true,
+    },
+    icons = {
+       padding = " ",
+       symlink_arrow = " ➛ ",
+       show = {
+          file = true,
+          folder = true,
+          folder_arrow = true,
+          git = false,
+       },
+       glyphs = {
+          default = "",
+          symlink = "",
+          folder = {
+             default = "",
+             empty = "",
+             empty_open = "",
+             open = "",
+             symlink = "",
+             symlink_open = "",
+             arrow_open = "",
+             arrow_closed = "",
+          },
+          git = {
+             unstaged = "✗",
+             staged = "✓",
+             unmerged = "",
+             renamed = "➜",
+             untracked = "★",
+             deleted = "",
+             ignored = "◌",
+          },
+       },
+    },
+  },
+})
 
 -- require('vim._core.ui2').enable({})

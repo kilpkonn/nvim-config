@@ -60,15 +60,6 @@ return packer.startup(
     use { "hrsh7th/cmp-calc", after = "nvim-cmp", }
     use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 
-    -- file managing , picker etc
-    use {
-      "kyazdani42/nvim-tree.lua",
-      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-      config = function()
-        require "plugins.configs.nvimtree"
-      end
-    }
-
     use {
       "nvim-lua/popup.nvim",
       after = "plenary.nvim"
