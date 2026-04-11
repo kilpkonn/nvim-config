@@ -15,21 +15,6 @@ return packer.startup(
     use { "andymass/vim-matchup", }
 
     use {
-      "williamboman/mason.nvim",
-      config = function()
-        require "plugins.configs.mason"
-      end,
-    }
-
-    use {
-      "williamboman/mason-lspconfig.nvim",
-      after = "mason.nvim",
-      config = function()
-        require("mason-lspconfig").setup()
-      end,
-    }
-
-    use {
       "rafamadriz/friendly-snippets",
       event = "VimEnter",
     }
@@ -84,17 +69,6 @@ return packer.startup(
       config = function()
         require "plugins.configs.telescope"
       end,
-    }
-
-    -- git stuff
-    use {
-      "lewis6991/gitsigns.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim"
-      },
-      config = function()
-        require "plugins.configs.gitsigns"
-      end
     }
 
     -- misc plugins

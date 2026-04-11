@@ -5,6 +5,7 @@ vim.pack.add({
   { src = 'https://github.com/akinsho/nvim-bufferline.lua' },
   { src = 'https://github.com/catgoose/nvim-colorizer.lua' },
   { src = 'https://github.com/kyazdani42/nvim-tree.lua' },
+  { src = 'https://github.com/lewis6991/gitsigns.nvim' },
 })
 
 vim.g.nvchad_theme = "onedark"
@@ -86,6 +87,24 @@ require("nvim-tree").setup({
        },
     },
   },
+})
+
+require('gitsigns').setup({
+    signs = {
+        add = { text = "│" },
+        change = { text = "│" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" }
+    },
+    signcolumn = false,
+    numhl = true,
+    watch_gitdir = {
+      interval = 1000,
+      follow_files = true
+    },
+    sign_priority = 6,
+    status_formatter = nil -- Use default
 })
 
 -- require('vim._core.ui2').enable({})
