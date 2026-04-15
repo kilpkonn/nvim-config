@@ -81,13 +81,6 @@ return packer.startup(
                   })
       end,
     }
-    use {
-      "numToStr/Comment.nvim",
-      event = "BufRead",
-      config = function()
-        require "plugins.configs.comment"
-      end
-    }
 
     use {
       "Pocco81/auto-save.nvim",
