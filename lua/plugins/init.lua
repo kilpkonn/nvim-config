@@ -47,14 +47,11 @@ return packer.startup(
 
     use {
       "nvim-lua/popup.nvim",
-      after = "plenary.nvim"
     }
 
     use {
       "nvim-telescope/telescope.nvim",
-      after = "plenary.nvim",
       requires = {
-        { "nvim-lua/plenary.nvim" },
         {
           "nvim-telescope/telescope-fzf-native.nvim",
           run = "make",
@@ -171,13 +168,11 @@ return packer.startup(
       requires = {
         { 'nvim-telescope/telescope.nvim' },
         { 'nvim-lua/popup.nvim' },
-        { 'nvim-lua/plenary.nvim' },
       }
     }
 
     use {
       'folke/todo-comments.nvim',
-      after = { 'plenary.nvim' },
       config = function()
         require "plugins.configs.todo-comments"
       end
@@ -213,7 +208,6 @@ return packer.startup(
 
     -- Custom language plugins
     -- use { 'michaelb/sniprun', run = 'bash ./install.sh' }
-    use { 'kaarmu/typst.vim', ft = {'typst'} }
     use { "nushell/tree-sitter-nu" }
     end
 )
