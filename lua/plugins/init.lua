@@ -116,13 +116,6 @@ return packer.startup(
     }
 
     use {
-      'folke/todo-comments.nvim',
-      config = function()
-        require "plugins.configs.todo-comments"
-      end
-    }
-
-    use {
       "folke/trouble.nvim",
       config = function()
         require "plugins.configs.trouble"
