@@ -6,6 +6,7 @@ vim.pack.add({
   { src = 'https://github.com/catgoose/nvim-colorizer.lua' },
   { src = 'https://github.com/kyazdani42/nvim-tree.lua' },
   { src = 'https://github.com/lewis6991/gitsigns.nvim' },
+  { src = 'https://github.com/andymass/vim-matchup' },
 })
 
 vim.g.nvchad_theme = "onedark"
@@ -107,4 +108,4 @@ require('gitsigns').setup({
     status_formatter = nil -- Use default
 })
 
--- require('vim._core.ui2').enable({})
+require('vim._core.ui2').enable({})

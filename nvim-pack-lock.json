@@ -4,6 +4,10 @@
       "rev": "5204800d758873c428a9b36103e554e8072d6943",
       "src": "https://github.com/kilpkonn/base46"
     },
+    "cheatsheet.nvim": {
+      "rev": "6a5c69d42013331a3eda70b340378f2f912b9a90",
+      "src": "https://github.com/doctorfree/cheatsheet.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -51,6 +55,10 @@
     "typst.vim": {
       "rev": "1d5436c0f55490893892441c0eca55e6cdf4916c",
       "src": "https://github.com/kaarmu/typst.vim"
+    },
+    "vim-matchup": {
+      "rev": "0106b1afd4a2f7e1098037b5ceb161bab7471088",
+      "src": "https://github.com/andymass/vim-matchup"
     }
   }
 }

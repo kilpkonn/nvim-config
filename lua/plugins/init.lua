@@ -12,7 +12,6 @@ local use = packer.use
 return packer.startup(
   function()
     use { "wbthomason/packer.nvim", }
-    use { "andymass/vim-matchup", }
 
     use {
       "rafamadriz/friendly-snippets",
@@ -46,10 +45,6 @@ return packer.startup(
     use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 
     use {
-      "nvim-lua/popup.nvim",
-    }
-
-    use {
       "nvim-telescope/telescope.nvim",
       requires = {
         {
@@ -76,15 +71,6 @@ return packer.startup(
           require('ultimate-autopair').setup({
                   --Config goes here
                   })
-      end,
-    }
-
-    use {
-      "Pocco81/auto-save.nvim",
-      branch = "dev",
-      event = "BufRead",
-      config = function()
-        require "plugins.configs.autosave"
       end,
     }
 
@@ -158,17 +144,6 @@ return packer.startup(
     use {
       'nvim-telescope/telescope-dap.nvim',
       event = "VimEnter"
-    }
-
-    use {
-      'sudormrfbin/cheatsheet.nvim',
-      cmd = {
-        'Cheatsheet'
-      },
-      requires = {
-        { 'nvim-telescope/telescope.nvim' },
-        { 'nvim-lua/popup.nvim' },
-      }
     }
 
     use {

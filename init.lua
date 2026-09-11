@@ -6,6 +6,7 @@ require "theme"
 require "plugins.lsp"
 require "plugins.treesitter"
 require "plugins.typst"
+require "plugins.cheatsheet"
 
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'plugins' require('packer').compile()")

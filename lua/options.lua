@@ -49,6 +49,8 @@ opt.laststatus = 3
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>hl")
 
+opt.autowriteall = true
+
 g.mapleader = " "
 g.auto_save = true
 
