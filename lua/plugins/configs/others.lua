@@ -1,13 +1,5 @@
 local M = {}
 
-M.neoscroll = function()
-    pcall(
-        function()
-            require("neoscroll").setup()
-        end
-    )
-end
-
 M.blankline = function()
     vim.g.indentLine_enabled = 1
     vim.g.indent_blankline_char = "▏"

@@ -75,37 +75,6 @@ return packer.startup(
     }
 
     use {
-      "jiaoshijie/undotree",
-      config = function()
-        require('undotree').setup()
-      end,
-      requires = {
-        "nvim-lua/plenary.nvim",
-      },
-    }
-
-    -- smooth scroll
-    use {
-      "karb94/neoscroll.nvim",
-      event = "WinScrolled",
-      config = function()
-        require("plugins.configs.others").neoscroll()
-      end
-    }
-
-    use {
-      "Pocco81/true-zen.nvim",
-      cmd = {
-        "TZAtaraxis",
-        "TZMinimalist",
-        "TZFocus"
-      },
-      config = function()
-        require "plugins.configs.zenmode"
-      end
-    }
-
-    use {
       "lukas-reineke/indent-blankline.nvim",
       event = "BufRead",
       setup = function()

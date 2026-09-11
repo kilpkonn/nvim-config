@@ -7,6 +7,8 @@ vim.pack.add({
   { src = 'https://github.com/kyazdani42/nvim-tree.lua' },
   { src = 'https://github.com/lewis6991/gitsigns.nvim' },
   { src = 'https://github.com/andymass/vim-matchup' },
+  { src = 'https://github.com/jiaoshijie/undotree' },
+  { src = 'https://github.com/karb94/neoscroll.nvim' },
 })
 
 vim.g.nvchad_theme = "onedark"
@@ -107,5 +109,7 @@ require('gitsigns').setup({
     sign_priority = 6,
     status_formatter = nil -- Use default
 })
+
+require('neoscroll').setup({})
 
 require('vim._core.ui2').enable({})

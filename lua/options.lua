@@ -52,7 +52,6 @@ opt.whichwrap:append("<>hl")
 opt.autowriteall = true
 
 g.mapleader = " "
-g.auto_save = true
 
 -- disable builtin vim plugins
 local disabled_built_ins = {
