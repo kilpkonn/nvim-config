@@ -5,6 +5,7 @@ require "autocmds"
 require "theme"
 require "plugins.lsp"
 require "plugins.treesitter"
+require "plugins.telescope"
 require "plugins.typst"
 require "plugins.cheatsheet"
 

@@ -44,25 +44,6 @@ return packer.startup(
     use { "hrsh7th/cmp-calc", after = "nvim-cmp", }
     use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 
-    use {
-      "nvim-telescope/telescope.nvim",
-      requires = {
-        {
-          "nvim-telescope/telescope-fzf-native.nvim",
-          run = "make",
-        },
-        {
-          "nvim-telescope/telescope-media-files.nvim",
-        },
-        {
-          "nvim-telescope/telescope-ui-select.nvim",
-        }
-      },
-      config = function()
-        require "plugins.configs.telescope"
-      end,
-    }
-
     -- misc plugins
     use{
       'altermo/ultimate-autopair.nvim',

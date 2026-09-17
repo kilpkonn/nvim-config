@@ -1,7 +1,11 @@
-local present, telescope = pcall(require, "telescope")
-if not present then
-    return
-end
+vim.pack.add({
+  { src = "https://github.com/nvim-telescope/telescope.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope-media-files.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
+})
+
+local telescope = require("telescope")
 
 telescope.setup(
     {

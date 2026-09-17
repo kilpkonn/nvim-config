@@ -1,9 +1,9 @@
-vim.pack.add{
+vim.pack.add({
   { src = 'https://github.com/neovim/nvim-lspconfig' },
   -- { src = 'https://github.com/ray-x/lsp_signature.nvim' },
   { src = 'https://github.com/williamboman/mason.nvim' },
   { src = 'https://github.com/williamboman/mason-lspconfig.nvim' },
-}
+})
 
 
 vim.api.nvim_create_autocmd('LspAttach', {
