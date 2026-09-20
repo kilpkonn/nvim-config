@@ -108,22 +108,6 @@ return packer.startup(
       cmd = { "DB" }
     }
 
-    use {
-      'MeanderingProgrammer/markdown.nvim',
-      as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
-      ft = { "md" },
-      config = function()
-          require('render-markdown').setup({})
-      end,
-    }
-
-    -- use {
-    --   "m4xshen/hardtime.nvim",
-    --   config = function()
-    --     require("hardtime").setup()
-    --   end
-    -- }
-
     -- Custom language plugins
     -- use { 'michaelb/sniprun', run = 'bash ./install.sh' }
     use { "nushell/tree-sitter-nu" }

@@ -10,6 +10,7 @@ vim.pack.add({
   { src = 'https://github.com/jiaoshijie/undotree' },
   { src = 'https://github.com/karb94/neoscroll.nvim' },
   { src = 'https://github.com/folke/todo-comments.nvim' },
+  { src = 'https://github.com/MeanderingProgrammer/markdown.nvim' },
 })
 
 vim.g.nvchad_theme = "onedark"
