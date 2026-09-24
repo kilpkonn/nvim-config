@@ -3,6 +3,7 @@ require "mappings"
 require "autocmds"
 
 require "theme"
+require "plugins.cmp"
 require "plugins.lsp"
 require "plugins.treesitter"
 require "plugins.telescope"

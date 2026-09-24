@@ -1,8 +1,23 @@
-local present, cmp = pcall(require, "cmp")
+vim.pack.add({
+  { src = 'https://github.com/rafamadriz/friendly-snippets' },
+  { src = 'https://github.com/L3MON4D3/LuaSnip' },
+  { src = 'https://github.com/hrsh7th/nvim-cmp' },
+  { src = 'https://github.com/saadparwaiz1/cmp_luasnip' },
+  { src = 'https://github.com/hrsh7th/cmp-nvim-lua' },
+  { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
+  { src = 'https://github.com/hrsh7th/cmp-buffer' },
+  { src = 'https://github.com/hrsh7th/cmp-path' },
+  { src = 'https://github.com/hrsh7th/cmp-cmdline' },
+  { src = 'https://github.com/hrsh7th/cmp-calc' },
+  { src = 'https://github.com/lukas-reineke/cmp-rg' },
+})
 
-if not present then
-  return
-end
+require("luasnip").config.set_config {
+   history = true,
+   updateevents = "TextChanged,TextChangedI",
+}
+require("luasnip/loaders/from_vscode").load()
+
 
 vim.o.completeopt = "menu,menuone"
 
@@ -19,6 +34,7 @@ local function border(hl_name)
   }
 end
 
+local cmp = require("cmp")
 cmp.setup({
   window = {
     documentation = {
