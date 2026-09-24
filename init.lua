@@ -9,6 +9,7 @@ require "plugins.treesitter"
 require "plugins.telescope"
 require "plugins.typst"
 require "plugins.cheatsheet"
+require "plugins.dap"
 
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'plugins' require('packer').compile()")

@@ -45,27 +45,6 @@ return packer.startup(
     }
 
     use {
-      'mfussenegger/nvim-dap',
-      event = "BufRead",
-      config = function()
-        require "plugins.configs.dap"
-      end
-    }
-
-    use {
-      'theHamsta/nvim-dap-virtual-text',
-      event = "BufRead",
-      config = function()
-        require "plugins.configs.dap-virtual-text"
-      end
-    }
-
-    use {
-      'nvim-telescope/telescope-dap.nvim',
-      event = "VimEnter"
-    }
-
-    use {
       "folke/trouble.nvim",
       config = function()
         require "plugins.configs.trouble"
