@@ -2,14 +2,6 @@ vim.pack.add({
   { src = 'https://github.com/mfussenegger/nvim-dap' },
   { src = 'https://github.com/theHamsta/nvim-dap-virtual-text' },
   { src = 'https://github.com/nvim-telescope/telescope-dap.nvim' },
-  { src = 'https://github.com/saadparwaiz1/cmp_luasnip' },
-  { src = 'https://github.com/hrsh7th/cmp-nvim-lua' },
-  { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
-  { src = 'https://github.com/hrsh7th/cmp-buffer' },
-  { src = 'https://github.com/hrsh7th/cmp-path' },
-  { src = 'https://github.com/hrsh7th/cmp-cmdline' },
-  { src = 'https://github.com/hrsh7th/cmp-calc' },
-  { src = 'https://github.com/lukas-reineke/cmp-rg' },
 })
 local dap = require("dap")
 
