@@ -7,4 +7,6 @@ vim.pack.add({
   { src = 'https://github.com/folke/trouble.nvim' },
 })
 
-require("ibl").setup()
+require("ibl").setup({
+    scope = { show_start = false, show_end = false, },
+})
